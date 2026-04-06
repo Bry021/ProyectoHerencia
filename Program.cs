@@ -4,14 +4,27 @@
     {
         static void Main(string[] args)
         {
-            Caballos caballo = new Caballos(Console.ReadLine());
+            Caballos caballo = new Caballos("Path");
+            Humanos humano = new Humanos("Akane");
+            Gorillas gorilla = new Gorillas("Sra. Kong");
+            Chimpances chimpance = new Chimpances("Diddy Kong");
 
-            Humanos humano = new Humanos(Console.ReadLine());
+            Mamifero[] mamiferos = new Mamifero[4];
 
-            Gorillas gorilla = new Gorillas(Console.ReadLine());
+            mamiferos[0] = humano;
+            mamiferos[1] = caballo;
+            mamiferos[2] = gorilla;
+            mamiferos[3] = chimpance;
+            
+            for (int i = 0; i < mamiferos.Length; i++)
+            {
+                mamiferos[i].Pensar();
+            }
 
-            Chimpances chimpance = new Chimpances(Console.ReadLine());
-
+            /*caballo.getNombre();
+            humano.getNombre();
+            gorilla.getNombre();
+            chimpance.getNombre();*/
         }
     }
 
@@ -23,9 +36,17 @@
         {
             nombreSerVivo = nombre;
         }
-        public void Respirar()
+        public void getNombre()
+        {
+            Console.WriteLine("El nombre del ser vivo es: " + nombreSerVivo);
+        }
+        protected void Respirar()
         {
             Console.WriteLine("El mamífero está respirando.");
+        }
+        public virtual void Pensar()
+        {
+            Console.WriteLine("El mamífero está pensando.");
         }
         public void CuidarCrias()
         {
@@ -50,6 +71,10 @@
         {
 
         }
+        public override void Pensar()
+        {
+            Console.WriteLine("El humano está pensando.");
+        }
         public void Hablar()
         {
             Console.WriteLine("El humano está hablando.");
@@ -60,6 +85,10 @@
         public Gorillas(string gorillaName) : base(gorillaName)
         {
 
+        }
+        public override void Pensar()
+        {
+            Console.WriteLine("El gorila está pensando.");
         }
         public void Trepar()
         {
